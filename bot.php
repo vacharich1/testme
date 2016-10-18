@@ -22,6 +22,13 @@ if (!is_null($events['events'])) {
 				'text' => $text
 				
 			];
+
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+			$response = $bot->replyMessage('$replyToken', $textMessageBuilder);
+			if ($response->isSucceeded()) {
+    				echo 'Succeeded!';
+    				return;
+			}
 			
 
 			// Make a POST Request to Messaging API to reply to sender
