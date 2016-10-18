@@ -27,8 +27,15 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 			$messages = [
-				'type' => 'text',
-				'text' => $text
+				{
+					'type' => 'text',
+					'text' => $text
+				},
+				{
+					'type' => 'text',
+					'text' => "hello"
+				}
+
 				
 			];
 
@@ -54,7 +61,6 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			
-			replyMessage($replyToken, $post)
 
 			echo $result . "\r\n";
 		}
