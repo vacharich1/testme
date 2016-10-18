@@ -1,13 +1,5 @@
 ﻿<?php
 
-public function replyMessage($replyToken, MessageBuilder $messageBuilder)
-    {
-        return $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
-            'replyToken' => $replyToken,
-            'messages' => $messageBuilder->buildMessage(),
-        ]);
-    }
-
 $access_token = '1l6c8hOlVNiLh23YRFrdl1TxJxK4KUZppI9dRaDscY5fX50D6xEBhb4D0ZglujEA1+MiFoFV2N5pl1KIYZmlq8/WSmxf2b4WVhcvfjJoUH7ISxjUDK55FzS1B3DhC6X4/m4ZM0/0bN7HRNzLzKToewdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -59,8 +51,6 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 			$result = curl_exec($ch);
 			curl_close($ch);
-
-			
 
 			echo $result . "\r\n";
 		}
