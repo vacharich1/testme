@@ -1,4 +1,13 @@
 ﻿<?php
+
+public function replyMessage($replyToken, MessageBuilder $messageBuilder)
+    {
+        return $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
+            'replyToken' => $replyToken,
+            'messages' => $messageBuilder->buildMessage(),
+        ]);
+    }
+
 $access_token = '1l6c8hOlVNiLh23YRFrdl1TxJxK4KUZppI9dRaDscY5fX50D6xEBhb4D0ZglujEA1+MiFoFV2N5pl1KIYZmlq8/WSmxf2b4WVhcvfjJoUH7ISxjUDK55FzS1B3DhC6X4/m4ZM0/0bN7HRNzLzKToewdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -23,12 +32,7 @@ if (!is_null($events['events'])) {
 				
 			];
 
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-			$response = $bot->replyMessage('$replyToken', $textMessageBuilder);
-			if ($response->isSucceeded()) {
-    				echo 'Succeeded!';
-    				return;
-			}
+			
 			
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -49,13 +53,8 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('<channel access token>');
-			$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
-
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-			$response = $bot->replyMessage('<replyToken>', $textMessageBuilder);
-
-			echo $response->getHTTPStatus() . ' ' . $response->getBody();
+			
+			replyMessage($replyToken, $post)
 
 			echo $result . "\r\n";
 		}
